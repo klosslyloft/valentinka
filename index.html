@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>С 14 февраля ❤️</title>
+
+  <!-- Красивый шрифт -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      background: white;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      overflow: hidden;
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* Контейнер сердца */
+    .heart-wrapper {
+      animation: rise 2s ease-out forwards;
+      transform: translateY(300px);
+    }
+
+    /* Сердце */
+    .heart {
+      width: 300px;
+      height: 270px;
+      background: red;
+      position: relative;
+      transform: rotate(-45deg) scale(0);
+      animation: open 1.5s ease-out 1.8s forwards;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      width: 300px;
+      height: 270px;
+      background: red;
+      border-radius: 50%;
+      position: absolute;
+    }
+
+    .heart::before {
+      top: -150px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: 150px;
+      top: 0;
+    }
+
+    /* Текст внутри */
+    .text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
+      width: 220px;
+      text-align: center;
+      color: white;
+      font-size: 18px;
+      line-height: 1.5;
+      opacity: 0;
+      animation: textFade 1.5s ease-in 3.2s forwards;
+    }
+
+    /* Анимации */
+    @keyframes rise {
+      to {
+        transform: translateY(-80px);
+      }
+    }
+
+    @keyframes open {
+      to {
+        transform: rotate(-45deg) scale(1);
+      }
+    }
+
+    @keyframes textFade {
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="heart-wrapper">
+    <div class="heart">
+      <div class="text">
+        С 14 февраля,<br>
+        для меня ты очень дорогой человек<br>
+        и я невероятно ценю тебя.<br><br>
+        Спасибо тебе за время,<br>
+        проведённое вместе.<br><br>
+        Люблю &lt;3
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
