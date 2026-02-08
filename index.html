@@ -1,113 +1,138 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>С 14 февраля ❤️</title>
 
-  <!-- Красивый шрифт -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
-      height: 100vh;
+      min-height: 100vh;
       background: white;
       display: flex;
       justify-content: center;
-      align-items: flex-end;
-      overflow: hidden;
+      align-items: center;
       font-family: 'Playfair Display', serif;
     }
 
-    /* Контейнер сердца */
     .heart-wrapper {
-      animation: rise 2s ease-out forwards;
-      transform: translateY(300px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 50px; /* ⬅ расстояние до кнопки */
     }
 
-    /* Сердце */
-    .heart {
-      width: 300px;
-      height: 270px;
-      background: red;
+    /* ⬇ контейнер строго под сердце */
+    .heart-box {
       position: relative;
-      transform: rotate(-45deg) scale(0);
-      animation: open 1.5s ease-out 1.8s forwards;
+      width: 320px;
+      height: 320px;
+    }
+
+    /* ❤️ сердце */
+    .heart {
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      background: #d6001c;
+      transform: rotate(-45deg);
+      animation: pulse 3s ease-in-out infinite;
+      cursor: pointer;
     }
 
     .heart::before,
     .heart::after {
       content: "";
-      width: 300px;
-      height: 270px;
-      background: red;
-      border-radius: 50%;
       position: absolute;
+      width: 320px;
+      height: 320px;
+      background: #d6001c;
+      border-radius: 50%;
     }
 
     .heart::before {
-      top: -150px;
+      top: -160px;
       left: 0;
     }
 
     .heart::after {
-      left: 150px;
+      left: 160px;
       top: 0;
     }
 
-    /* Текст внутри */
+    /* 📝 текст — безопасная зона */
     .text {
       position: absolute;
-      top: 50%;
+      top: 52%;
       left: 50%;
       transform: translate(-50%, -50%) rotate(45deg);
-      width: 220px;
-      text-align: center;
+      width: 60%;
       color: white;
+      text-align: center;
       font-size: 18px;
-      line-height: 1.5;
+      line-height: 1.6;
       opacity: 0;
-      animation: textFade 1.5s ease-in 3.2s forwards;
+      transition: opacity 1.4s ease;
+      pointer-events: none;
     }
 
-    /* Анимации */
-    @keyframes rise {
-      to {
-        transform: translateY(-80px);
-      }
+    .text.show {
+      opacity: 1;
     }
 
-    @keyframes open {
-      to {
-        transform: rotate(-45deg) scale(1);
-      }
+    /* 🔘 кнопка */
+    .btn {
+      background: none;
+      border: 1px solid #d6001c;
+      color: #d6001c;
+      padding: 10px 26px;
+      font-family: inherit;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.4s ease;
     }
 
-    @keyframes textFade {
-      to {
-        opacity: 1;
-      }
+    .btn:hover {
+      background: #d6001c;
+      color: white;
+    }
+
+    @keyframes pulse {
+      0%,100% { transform: rotate(-45deg) scale(1); }
+      50% { transform: rotate(-45deg) scale(1.03); }
     }
   </style>
 </head>
 <body>
 
   <div class="heart-wrapper">
-    <div class="heart">
-      <div class="text">
-        С 14 февраля,<br>
-        для меня ты очень дорогой человек<br>
-        и я невероятно ценю тебя.<br><br>
-        Спасибо тебе за время,<br>
-        проведённое вместе.<br><br>
-        Люблю &lt;3
+
+    <div class="heart-box">
+      <div class="heart" onclick="openText()">
+        <div class="text" id="text">
+          С 14 февраля,<br>
+          для меня ты очень дорогой человек,<br>
+          и я невероятно ценю тебя.<br><br>
+          Спасибо тебе за время,<br>
+          проведённое вместе.<br><br>
+          Люблю &lt;3
+        </div>
       </div>
     </div>
+
+    <button class="btn" onclick="openText()">Открыть письмо</button>
+
   </div>
+
+  <script>
+    function openText() {
+      document.getElementById('text').classList.add('show');
+    }
+  </script>
 
 </body>
 </html>
